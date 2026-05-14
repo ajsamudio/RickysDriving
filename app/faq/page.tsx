@@ -129,14 +129,14 @@ export default function FAQPage() {
         <div className="absolute -left-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest">
+            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest animate-rd-fade-up">
               <span className="w-1.5 h-1.5 rounded-full bg-gold" />
               FAQ
             </span>
-            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance">
-              Questions, <span className="text-gold">answered</span>.
+            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance animate-rd-fade-up delay-100">
+              Questions, <span className="rd-shimmer">answered</span>.
             </h1>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
+            <p className="text-lg text-gray-300 leading-relaxed max-w-xl animate-rd-fade-up delay-200">
               Everything new students ask — permits, packages, DMV test prep,
               cancellations, and the rest.
             </p>
@@ -148,7 +148,7 @@ export default function FAQPage() {
       <section className="py-20 sm:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {categories.map((cat) => (
-            <div key={cat.title}>
+            <div key={cat.title} data-reveal="up">
               <div className="flex items-center gap-3 mb-7">
                 <span className="w-2 h-8 bg-gold rounded-full" />
                 <h2 className="text-2xl sm:text-3xl font-black text-navy">
@@ -163,7 +163,7 @@ export default function FAQPage() {
 
       {/* ── Still have questions ── */}
       <section className="py-20 bg-off-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center" data-reveal="up">
           <h2 className="text-3xl sm:text-4xl font-black text-navy mb-4">
             Still have questions?
           </h2>

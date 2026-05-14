@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
+import ScrollObserver from "@/components/ScrollObserver";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-inter antialiased flex flex-col min-h-screen bg-white text-navy">
+        <ScrollObserver />
         <AnnouncementBanner />
         <Navbar />
         <main className="flex-1">{children}</main>

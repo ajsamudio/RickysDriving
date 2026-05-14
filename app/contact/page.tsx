@@ -79,14 +79,14 @@ export default function ContactPage() {
         <div className="absolute -right-32 -bottom-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest">
+            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest animate-rd-fade-up">
               <span className="w-1.5 h-1.5 rounded-full bg-gold" />
               Contact
             </span>
-            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance">
-              Let&apos;s <span className="text-gold">talk</span>.
+            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance animate-rd-fade-up delay-100">
+              Let&apos;s <span className="rd-shimmer">talk</span>.
             </h1>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
+            <p className="text-lg text-gray-300 leading-relaxed max-w-xl animate-rd-fade-up delay-200">
               Questions about packages? Picking the right lesson? Ready to
               book? Send a message — Ricky reads them all personally.
             </p>
@@ -100,7 +100,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14">
             {/* Left: contact info cards */}
             <div className="lg:col-span-2 space-y-4">
-              <div className="mb-6">
+              <div className="mb-6" data-reveal="left">
                 <h2 className="text-3xl sm:text-4xl font-black text-navy mb-3">
                   Get in touch
                 </h2>
@@ -110,7 +110,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {contactCards.map((c) => {
+              {contactCards.map((c, i) => {
                 const inner = (
                   <>
                     <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-navy text-gold flex items-center justify-center">
@@ -129,7 +129,9 @@ export default function ContactPage() {
                   <a
                     key={c.label}
                     href={c.href}
-                    className="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 bg-white hover:border-gold/40 hover:shadow-md transition-all"
+                    className="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 bg-white hover:border-gold/40 hover:shadow-md hover-lift"
+                    data-reveal="left"
+                    data-reveal-delay={80 + i * 80}
                   >
                     {inner}
                   </a>
@@ -137,6 +139,8 @@ export default function ContactPage() {
                   <div
                     key={c.label}
                     className="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 bg-off-white"
+                    data-reveal="left"
+                    data-reveal-delay={80 + i * 80}
                   >
                     {inner}
                   </div>
@@ -145,7 +149,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right: form */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3" data-reveal="right">
               <ContactForm />
             </div>
           </div>
@@ -155,7 +159,7 @@ export default function ContactPage() {
       {/* ── Service area ── */}
       <section className="py-20 bg-off-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          <div className="text-center mb-10" data-reveal="up">
             <h2 className="text-3xl sm:text-4xl font-black text-navy mb-3">
               Serving all of Orange County
             </h2>
@@ -166,10 +170,12 @@ export default function ContactPage() {
           </div>
 
           <div className="flex flex-wrap gap-2 justify-center max-w-3xl mx-auto">
-            {ocCities.map((city) => (
+            {ocCities.map((city, i) => (
               <span
                 key={city}
                 className="inline-flex items-center gap-2 bg-white border border-gray-200 px-4 py-2 rounded-full text-sm text-navy font-medium"
+                data-reveal="up"
+                data-reveal-delay={i * 30}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-gold" />
                 {city}

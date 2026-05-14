@@ -99,16 +99,16 @@ export default function AboutPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest">
+            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest animate-rd-fade-up">
               <span className="w-1.5 h-1.5 rounded-full bg-gold" />
               About Ricky
             </span>
 
-            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance">
-              The instructor Orange County <span className="text-gold">trusts</span>.
+            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance animate-rd-fade-up delay-100">
+              The instructor Orange County <span className="rd-shimmer">trusts</span>.
             </h1>
 
-            <p className="text-lg text-gray-300 leading-relaxed max-w-lg">
+            <p className="text-lg text-gray-300 leading-relaxed max-w-lg animate-rd-fade-up delay-200">
               500+ students. 98% first-try pass rate. A simple philosophy: meet
               every driver where they are, and build them up from there.
             </p>
@@ -121,7 +121,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Portrait */}
-            <div className="relative">
+            <div className="relative" data-reveal="left">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-navy shadow-xl">
                 <Image
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80"
@@ -140,7 +140,7 @@ export default function AboutPage() {
             </div>
 
             {/* Story */}
-            <div>
+            <div data-reveal="right">
               <h2 className="text-4xl sm:text-5xl font-black text-navy mb-6 text-balance">
                 Hi, I&apos;m Ricky.
               </h2>
@@ -178,14 +178,16 @@ export default function AboutPage() {
 
           {/* Credentials */}
           <div className="mt-20 sm:mt-24">
-            <h3 className="text-2xl sm:text-3xl font-black text-navy mb-8 text-center">
+            <h3 className="text-2xl sm:text-3xl font-black text-navy mb-8 text-center" data-reveal="up">
               Credentials & Experience
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
-              {credentials.map((c) => (
+              {credentials.map((c, i) => (
                 <div
                   key={c}
                   className="flex items-start gap-3 bg-off-white rounded-xl p-4 border border-gray-100"
+                  data-reveal="up"
+                  data-reveal-delay={i * 60}
                 >
                   <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gold flex items-center justify-center mt-0.5">
                     <svg
@@ -213,7 +215,7 @@ export default function AboutPage() {
       {/* ── Values ── */}
       <section className="py-20 sm:py-24 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14" data-reveal="up">
             <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
               What I Stand For
             </h2>
@@ -223,10 +225,12 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {values.map((v) => (
+            {values.map((v, i) => (
               <div
                 key={v.title}
-                className="group p-8 rounded-2xl bg-white border border-gray-100 hover:border-gold/40 hover:shadow-lg transition-all"
+                className="group p-8 rounded-2xl bg-white border border-gray-100 hover:border-gold/40 hover:shadow-lg hover-lift"
+                data-reveal="up"
+                data-reveal-delay={i * 100}
               >
                 <div className="w-14 h-14 rounded-xl bg-navy flex items-center justify-center text-gold mb-5 group-hover:bg-gold group-hover:text-navy transition-colors">
                   {v.icon}
@@ -244,7 +248,7 @@ export default function AboutPage() {
         <div className="absolute -right-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
         <div className="absolute -left-32 -bottom-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
 
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center" data-reveal="up">
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-5 text-balance">
             Ready to learn with Ricky?
           </h2>

@@ -139,29 +139,29 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-24">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest">
+            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest animate-rd-fade-up">
               <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
               Orange County, CA
             </span>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 text-balance">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 text-balance animate-rd-fade-up delay-100">
               Drive with{" "}
-              <span className="text-gold">Confidence.</span>
+              <span className="rd-shimmer">Confidence.</span>
               <br />
               Learn with{" "}
               <span className="relative inline-block">
                 Ricky.
-                <span className="absolute -bottom-1 left-0 w-full h-1 bg-gold rounded-full" />
+                <span className="absolute -bottom-1 left-0 w-full h-1 bg-gold rounded-full animate-rd-grow-line" />
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-lg">
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-lg animate-rd-fade-up delay-200">
               Orange County&apos;s most trusted driving instructor. Personalized,
               one-on-one lessons that turn anxious beginners into road-ready,
               confident drivers.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 animate-rd-fade-up delay-300">
               <Link
                 href="/booking"
                 className="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-navy font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-gold/30 hover:-translate-y-0.5"
@@ -192,8 +192,13 @@ export default function HomePage() {
       <section className="bg-off-white border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {trustStats.map(({ stat, label }) => (
-              <div key={label} className="flex flex-col items-center gap-1">
+            {trustStats.map(({ stat, label }, i) => (
+              <div
+                key={label}
+                className="flex flex-col items-center gap-1"
+                data-reveal="up"
+                data-reveal-delay={i * 80}
+              >
                 <span className="text-3xl sm:text-4xl font-black text-navy">{stat}</span>
                 <span className="text-sm text-gray-500 font-medium">{label}</span>
               </div>
@@ -205,7 +210,7 @@ export default function HomePage() {
       {/* ── Features ── */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16" data-reveal="up">
             <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
               Why Students Choose Ricky
             </h2>
@@ -216,10 +221,12 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((f) => (
+            {features.map((f, i) => (
               <div
                 key={f.title}
-                className="group p-8 rounded-2xl border border-gray-100 hover:border-gold/40 hover:shadow-lg transition-all"
+                className="group p-8 rounded-2xl border border-gray-100 hover:border-gold/40 hover:shadow-lg hover-lift bg-white"
+                data-reveal="up"
+                data-reveal-delay={i * 120}
               >
                 <div className="w-14 h-14 rounded-xl bg-navy flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-navy transition-colors">
                   {f.icon}
@@ -235,7 +242,7 @@ export default function HomePage() {
       {/* ── Package Preview ── */}
       <section className="py-24 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16" data-reveal="up">
             <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
               Lesson Packages
             </h2>
@@ -246,21 +253,27 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-start">
-            {previewPackages.map((pkg) => (
-              <PackageCard
+            {previewPackages.map((pkg, i) => (
+              <div
                 key={pkg.title}
-                title={pkg.title}
-                sessions={pkg.sessions}
-                hours={pkg.hours}
-                price={pkg.price}
-                features={pkg.features}
-                featured={pkg.featured}
-                stripeLink="/services"
-              />
+                data-reveal="up"
+                data-reveal-delay={i * 120}
+                className="hover-lift"
+              >
+                <PackageCard
+                  title={pkg.title}
+                  sessions={pkg.sessions}
+                  hours={pkg.hours}
+                  price={pkg.price}
+                  features={pkg.features}
+                  featured={pkg.featured}
+                  stripeLink="/services"
+                />
+              </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-12" data-reveal="up">
             <Link
               href="/services"
               className="inline-flex items-center gap-2 text-navy font-semibold border-2 border-navy hover:bg-navy hover:text-white px-8 py-3.5 rounded-xl transition-all"
@@ -277,7 +290,7 @@ export default function HomePage() {
       {/* ── Testimonials ── */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16" data-reveal="up">
             <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
               What Students Are Saying
             </h2>
@@ -288,14 +301,20 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-            {testimonials.map((t) => (
-              <TestimonialCard
+            {testimonials.map((t, i) => (
+              <div
                 key={t.name}
-                quote={t.quote}
-                name={t.name}
-                location={t.location}
-                rating={t.rating}
-              />
+                data-reveal="up"
+                data-reveal-delay={i * 120}
+                className="hover-lift"
+              >
+                <TestimonialCard
+                  quote={t.quote}
+                  name={t.name}
+                  location={t.location}
+                  rating={t.rating}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -315,7 +334,7 @@ export default function HomePage() {
         <div className="absolute -right-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
         <div className="absolute -left-32 -bottom-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
 
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center" data-reveal="up">
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-5 text-balance">
             Ready to Start Your Journey?
           </h2>

@@ -117,14 +117,14 @@ export default function ServicesPage() {
         <div className="absolute -right-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest">
+            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest animate-rd-fade-up">
               <span className="w-1.5 h-1.5 rounded-full bg-gold" />
               Lesson Packages
             </span>
-            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance">
-              Built for every <span className="text-gold">level</span>.
+            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance animate-rd-fade-up delay-100">
+              Built for every <span className="rd-shimmer">level</span>.
             </h1>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
+            <p className="text-lg text-gray-300 leading-relaxed max-w-xl animate-rd-fade-up delay-200">
               Whether you&apos;ve never sat behind a wheel or you&apos;re
               tuning up for next week&apos;s DMV test, there&apos;s a package
               that fits.
@@ -137,17 +137,23 @@ export default function ServicesPage() {
       <section className="py-20 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-start">
-            {packages.map((pkg) => (
-              <PackageCard
+            {packages.map((pkg, i) => (
+              <div
                 key={pkg.title}
-                title={pkg.title}
-                sessions={pkg.sessions}
-                hours={pkg.hours}
-                price={pkg.price}
-                features={pkg.features}
-                featured={pkg.featured}
-                stripeLink={`/booking?package=${pkg.slug}`}
-              />
+                data-reveal="up"
+                data-reveal-delay={i * 120}
+                className="hover-lift"
+              >
+                <PackageCard
+                  title={pkg.title}
+                  sessions={pkg.sessions}
+                  hours={pkg.hours}
+                  price={pkg.price}
+                  features={pkg.features}
+                  featured={pkg.featured}
+                  stripeLink={`/booking?package=${pkg.slug}`}
+                />
+              </div>
             ))}
           </div>
 
@@ -162,7 +168,7 @@ export default function ServicesPage() {
       {/* ── Add-ons ── */}
       <section className="py-20 sm:py-24 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14" data-reveal="up">
             <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
               Add-ons & Extras
             </h2>
@@ -173,10 +179,12 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {addOns.map((a) => (
+            {addOns.map((a, i) => (
               <div
                 key={a.title}
-                className="group flex gap-5 p-6 rounded-2xl bg-white border border-gray-100 hover:border-gold/40 hover:shadow-md transition-all"
+                className="group flex gap-5 p-6 rounded-2xl bg-white border border-gray-100 hover:border-gold/40 hover:shadow-md hover-lift"
+                data-reveal="up"
+                data-reveal-delay={i * 80}
               >
                 <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-navy text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-navy transition-colors">
                   {a.icon}
@@ -210,7 +218,7 @@ export default function ServicesPage() {
       {/* ── What's Included ── */}
       <section className="py-20 sm:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12" data-reveal="up">
             <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
               Every Lesson Includes
             </h2>
@@ -220,10 +228,12 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {included.map((item) => (
+            {included.map((item, i) => (
               <div
                 key={item}
                 className="flex items-start gap-3 p-5 rounded-xl border border-gray-100 bg-off-white"
+                data-reveal="up"
+                data-reveal-delay={i * 60}
               >
                 <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gold flex items-center justify-center mt-0.5">
                   <svg
@@ -273,7 +283,7 @@ export default function ServicesPage() {
         <div className="absolute -right-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
         <div className="absolute -left-32 -bottom-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
 
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center" data-reveal="up">
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-5 text-balance">
             Pick your package. Pick your time.
           </h2>

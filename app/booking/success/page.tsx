@@ -68,9 +68,9 @@ export default async function SuccessPage({ searchParams }: PageProps) {
   return (
     <section className="min-h-[80vh] bg-off-white py-16 sm:py-24 flex items-start justify-center">
       <div className="max-w-2xl w-full px-4 sm:px-6">
-        <div className="bg-white rounded-2xl shadow-xl border border-gold/30 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl border border-gold/30 overflow-hidden animate-rd-fade-up">
           <div className="bg-gold p-8 sm:p-10 text-center">
-            <div className="w-16 h-16 bg-navy rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+            <div className="w-16 h-16 bg-navy rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg animate-rd-fade-in delay-200">
               <svg className="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
