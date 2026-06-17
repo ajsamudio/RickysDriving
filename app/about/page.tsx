@@ -124,11 +124,11 @@ export default function AboutPage() {
             <div className="relative" data-reveal="left">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-navy shadow-xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80"
+                  src="/images/ricky.webp"
                   alt="Ricky DeVera, driving instructor"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
-                  unoptimized
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-gold rounded-2xl p-6 shadow-xl hidden sm:block">
