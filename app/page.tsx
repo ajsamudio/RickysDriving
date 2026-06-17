@@ -207,8 +207,60 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Features ── */}
+      {/* ── Meet Ricky ── */}
       <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center" data-reveal="up">
+            <div className="relative">
+              <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/ricky.webp"
+                  alt="Ricky, your driving instructor"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 28rem"
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-5 -right-3 sm:right-8 lg:-right-5 bg-gold text-navy font-black px-6 py-4 rounded-xl shadow-lg">
+                <div className="text-2xl leading-none">10+ yrs</div>
+                <div className="text-xs font-semibold uppercase tracking-wide">Experience</div>
+              </div>
+            </div>
+
+            <div>
+              <span className="inline-block text-gold font-semibold text-sm uppercase tracking-widest mb-4">
+                Meet Your Instructor
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-black text-navy mb-6 text-balance">
+                Hi, I&apos;m Ricky.
+              </h2>
+              <p className="text-gray-500 text-lg leading-relaxed mb-5">
+                For over a decade I&apos;ve helped Orange County drivers go from
+                white-knuckle nervous to genuinely confident behind the wheel. I
+                built my teaching around one idea: every student learns best when
+                they feel safe, supported, and never rushed.
+              </p>
+              <p className="text-gray-500 text-lg leading-relaxed mb-8">
+                Whether it&apos;s your very first time in the driver&apos;s seat or
+                you&apos;re polishing up for your DMV test, I&apos;ll meet you
+                exactly where you are — and get you road-ready.
+              </p>
+              <Link
+                href="/booking"
+                className="inline-flex items-center gap-2 bg-navy hover:bg-navy/90 text-white font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:-translate-y-0.5"
+              >
+                Book a Lesson with Ricky
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Features ── */}
+      <section className="py-24 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-reveal="up">
             <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
@@ -240,7 +292,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Package Preview ── */}
-      <section className="py-24 bg-off-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-reveal="up">
             <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
@@ -288,7 +340,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Testimonials ── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-reveal="up">
             <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
