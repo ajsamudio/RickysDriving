@@ -107,12 +107,14 @@ values
   ('confident', 'Confident', 'Three 2-hour sessions — DMV-ready with mock test.', 360, 32000, 3)
 on conflict (slug) do nothing;
 
--- Mon–Fri 9am–5pm placeholder. Edit via /admin/availability after seeding.
+-- Every day 8:00am–6:30pm (Ricky's real availability). Edit via /admin/availability.
 insert into availability (day_of_week, start_time, end_time)
 values
-  (1, '09:00', '17:00'),
-  (2, '09:00', '17:00'),
-  (3, '09:00', '17:00'),
-  (4, '09:00', '17:00'),
-  (5, '09:00', '17:00')
+  (0, '08:00', '18:30'),
+  (1, '08:00', '18:30'),
+  (2, '08:00', '18:30'),
+  (3, '08:00', '18:30'),
+  (4, '08:00', '18:30'),
+  (5, '08:00', '18:30'),
+  (6, '08:00', '18:30')
 on conflict do nothing;
