@@ -124,7 +124,6 @@ export default function ContactForm() {
             autoComplete="tel"
             disabled={status === "submitting"}
             className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all text-navy disabled:bg-gray-50"
-            placeholder="(714) 555-0102"
           />
         </div>
       </div>

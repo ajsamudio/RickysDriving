@@ -286,7 +286,6 @@ export default function BookingWizard({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="form-input"
-                    placeholder="(714) 555-0102"
                     disabled={submitting}
                   />
                 </Field>

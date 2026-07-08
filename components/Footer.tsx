@@ -75,6 +75,14 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a
+                  href="tel:+15624248885"
+                  className="hover:text-gold transition-colors"
+                >
+                  (562) 424-8885
+                </a>
+              </li>
+              <li>
                 <Link
                   href="/booking"
                   className="text-gold hover:text-gold-light font-semibold transition-colors"
