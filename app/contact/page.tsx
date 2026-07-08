@@ -18,6 +18,7 @@ const contactCards = [
     label: "Email",
     value: "info@rickysdriving.com",
     href: "mailto:info@rickysdriving.com",
+    note: null,
   },
   {
     icon: (
@@ -27,8 +28,9 @@ const contactCards = [
       </svg>
     ),
     label: "Call or text",
-    value: "(714) 555-0123",
-    href: "tel:+17145550123",
+    value: "(562) 424-8885",
+    href: "tel:+15624248885",
+    note: "For more details, please call me",
   },
   {
     icon: (
@@ -42,6 +44,7 @@ const contactCards = [
     label: "Service area",
     value: "All of Orange County, CA",
     href: null,
+    note: null,
   },
   {
     icon: (
@@ -53,6 +56,7 @@ const contactCards = [
     label: "Hours",
     value: "Mon–Sat, 8am–8pm",
     href: null,
+    note: null,
   },
 ];
 
@@ -121,6 +125,9 @@ export default function ContactPage() {
                         {c.label}
                       </p>
                       <p className="text-navy font-bold">{c.value}</p>
+                      {c.note && (
+                        <p className="text-sm text-gray-500 mt-1">{c.note}</p>
+                      )}
                     </div>
                   </>
                 );
