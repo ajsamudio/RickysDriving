@@ -11,7 +11,7 @@ export default function AnnouncementBanner() {
     <div className="bg-gold text-navy text-sm font-semibold py-2.5 px-4 flex items-center justify-center gap-3 relative">
       <span className="text-base">🎓</span>
       <span>
-        Now accepting new students for June — limited spots available.{" "}
+        Now accepting new students for summer and fall — limited spots available.{" "}
         <a
           href="/booking"
           className="underline underline-offset-2 hover:text-navy/70 transition-colors"

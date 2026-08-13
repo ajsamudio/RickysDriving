@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Ricky's Driving | Drive with Confidence. Learn with Ricky.",
   description:
     "Orange County's most trusted driving instructor. Personalized, one-on-one lessons that turn anxious beginners into road-ready, confident drivers.",
+  alternates: { canonical: "/" },
 };
 
 const features = [

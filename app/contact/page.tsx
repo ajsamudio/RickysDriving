@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Get in touch with Ricky's Driving School. Email, call, or send a message — Ricky responds personally within 24 hours.",
+  alternates: { canonical: "/contact" },
 };
 
 const contactCards = [

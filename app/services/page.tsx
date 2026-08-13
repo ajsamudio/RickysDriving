@@ -5,7 +5,8 @@ import PackageCard from "@/components/PackageCard";
 export const metadata: Metadata = {
   title: "Lesson Packages & Pricing",
   description:
-    "Driving lesson packages built for every level — from absolute beginners to DMV-test-ready drivers. Transparent pricing, one-on-one instruction, all of Orange County.",
+    "Driving lesson packages for every level, from first-time drivers to DMV test preparation. One-on-one instruction throughout Orange County. Call for current pricing.",
+  alternates: { canonical: "/services" },
 };
 
 const packages = [

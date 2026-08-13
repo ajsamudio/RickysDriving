@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "FAQ",
   description:
     "Answers to common questions about driving lessons with Ricky — permits, pricing, the DMV test, scheduling, and more.",
+  alternates: { canonical: "/faq" },
 };
 
 const gettingStarted: FAQItem[] = [
@@ -58,7 +59,7 @@ const pricing: FAQItem[] = [
   {
     question: "How much do lessons cost?",
     answer:
-      "Pricing varies by package and is shown at checkout. Call or text for current rates — Ricky keeps prices competitive with other OC instructors while offering more personalized instruction.",
+      "Call or text Ricky for current package pricing. He'll help you choose the right lesson plan based on your experience, goals, and DMV test timeline.",
   },
   {
     question: "What payment methods do you accept?",

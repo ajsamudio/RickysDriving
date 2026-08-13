@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "About Ricky",
   description:
     "Meet Ricky DeVera — Orange County's most patient driving instructor. Learn about the philosophy behind 500+ confident, license-ready students.",
+  alternates: { canonical: "/about" },
 };
 
 const credentials = [

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Book a Lesson",
   description:
     "Pick your package, your day, and your time. Pay securely and lock in your driving lesson with Ricky.",
+  alternates: { canonical: "/booking" },
 };
 
 export const dynamic = "force-dynamic";
