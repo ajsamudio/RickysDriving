@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Overpass } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -14,8 +14,14 @@ const siteUrl =
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+// Overpass is derived from Highway Gothic, the typeface on US road signs.
+const overpass = Overpass({
+  subsets: ["latin"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -115,8 +121,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-inter antialiased flex flex-col min-h-screen bg-white text-navy">
+    <html lang="en" className={`${inter.variable} ${overpass.variable}`}>
+      <body className="font-inter antialiased flex flex-col min-h-screen bg-[#FFFDF8] text-ink">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

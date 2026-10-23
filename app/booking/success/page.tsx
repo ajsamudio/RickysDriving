@@ -66,12 +66,12 @@ export default async function SuccessPage({ searchParams }: PageProps) {
     : null;
 
   return (
-    <section className="min-h-[80vh] bg-off-white py-16 sm:py-24 flex items-start justify-center">
+    <section className="min-h-[80vh] paper-grid py-16 sm:py-24 flex items-start justify-center">
       <div className="max-w-2xl w-full px-4 sm:px-6">
-        <div className="bg-white rounded-2xl shadow-xl border border-gold/30 overflow-hidden animate-rd-fade-up">
-          <div className="bg-gold p-8 sm:p-10 text-center">
-            <div className="w-16 h-16 bg-navy rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg animate-rd-fade-in delay-200">
-              <svg className="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 20 20">
+        <div className="bg-white rounded-[32px] shadow-[0_40px_80px_-40px_rgba(21,23,28,0.6)] ring-1 ring-ink/10 overflow-hidden animate-rd-fade-up">
+          <div className="sign-plate !rounded-none p-8 sm:p-12 text-center">
+            <div className="w-16 h-16 bg-lane rounded-full mx-auto mb-5 flex items-center justify-center shadow-lg animate-rd-fade-in delay-200">
+              <svg className="w-8 h-8 text-ink" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -79,10 +79,10 @@ export default async function SuccessPage({ searchParams }: PageProps) {
                 />
               </svg>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-black text-navy mb-2">
+            <h1 className="text-4xl sm:text-5xl font-black text-white mb-3">
               You&apos;re booked!
             </h1>
-            <p className="text-navy/80 leading-relaxed">
+            <p className="text-white/80 leading-relaxed max-w-md mx-auto">
               Payment received. Ricky will see your lesson on his schedule and
               reach out the morning of.
             </p>
@@ -90,11 +90,11 @@ export default async function SuccessPage({ searchParams }: PageProps) {
 
           <div className="p-8 sm:p-10">
             {summary ? (
-              <div className="bg-off-white rounded-xl border border-gray-100 p-5 sm:p-6 mb-6">
+              <div className="bg-paper rounded-[20px] p-5 sm:p-6 mb-7">
                 <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
                   Lesson
                 </p>
-                <p className="text-navy font-bold text-lg mb-4">
+                <p className="text-ink font-bold text-lg mb-4">
                   {summary.serviceName}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -102,7 +102,7 @@ export default async function SuccessPage({ searchParams }: PageProps) {
                     <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
                       Date
                     </p>
-                    <p className="text-navy font-semibold">
+                    <p className="text-ink font-semibold">
                       {formatDate(summary.scheduledAt)}
                     </p>
                   </div>
@@ -110,7 +110,7 @@ export default async function SuccessPage({ searchParams }: PageProps) {
                     <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
                       Time
                     </p>
-                    <p className="text-navy font-semibold">
+                    <p className="text-ink font-semibold">
                       {formatTime(summary.scheduledAt)} PT
                     </p>
                   </div>
@@ -118,7 +118,7 @@ export default async function SuccessPage({ searchParams }: PageProps) {
                     <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
                       Duration
                     </p>
-                    <p className="text-navy font-semibold">
+                    <p className="text-ink font-semibold">
                       {summary.durationMinutes} minutes
                     </p>
                   </div>
@@ -126,7 +126,7 @@ export default async function SuccessPage({ searchParams }: PageProps) {
                     <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
                       Paid
                     </p>
-                    <p className="text-navy font-semibold">
+                    <p className="text-ink font-semibold">
                       {formatPrice(summary.priceCents)}
                     </p>
                   </div>
@@ -138,7 +138,7 @@ export default async function SuccessPage({ searchParams }: PageProps) {
               </p>
             )}
 
-            <h3 className="text-navy font-bold mb-3">What happens next</h3>
+            <h3 className="text-ink text-xl font-black mb-4">What happens next</h3>
             <ol className="space-y-2 mb-7">
               {[
                 "You'll get a confirmation email in the next few minutes.",
@@ -149,7 +149,7 @@ export default async function SuccessPage({ searchParams }: PageProps) {
                   key={step}
                   className="flex items-start gap-3 text-sm text-gray-600 leading-relaxed"
                 >
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gold/20 text-gold-dark font-bold flex items-center justify-center text-xs">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-lane text-ink font-black flex items-center justify-center text-xs">
                     {i + 1}
                   </span>
                   {step}
@@ -160,13 +160,13 @@ export default async function SuccessPage({ searchParams }: PageProps) {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/"
-                className="flex-1 inline-flex items-center justify-center gap-2 bg-navy hover:bg-navy-light text-white font-bold py-3 rounded-xl transition-all text-sm"
+                className="btn-dark flex-1"
               >
                 Back to home
               </Link>
               <Link
                 href="/contact"
-                className="flex-1 inline-flex items-center justify-center gap-2 bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white font-bold py-3 rounded-xl transition-all text-sm"
+                className="btn-outline flex-1"
               >
                 Need to reschedule?
               </Link>

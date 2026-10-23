@@ -19,7 +19,7 @@ export default async function AdminBlockedDatesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-black text-navy mb-1">Blocked Dates</h1>
+        <h1 className="text-3xl font-black text-ink mb-1">Blocked Dates</h1>
         <p className="text-gray-500 max-w-2xl">
           Block off specific dates (vacations, holidays, personal time).
           Customers won&apos;t be able to book any times on these dates.

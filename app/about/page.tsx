@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
+import PageHero from "@/components/PageHero";
+import SectionHeading from "@/components/SectionHeading";
+import CtaSign from "@/components/CtaSign";
 
 export const metadata: Metadata = {
   title: "About Ricky",
@@ -84,74 +86,48 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="relative bg-navy overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1920&q=80"
-            alt="Driving instructor"
-            fill
-            className="object-cover opacity-20"
-            priority
-            unoptimized
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/70" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest animate-rd-fade-up">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-              About Ricky
-            </span>
-
-            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance animate-rd-fade-up delay-100">
-              The instructor Orange County <span className="rd-shimmer">trusts</span>.
-            </h1>
-
-            <p className="text-lg text-gray-300 leading-relaxed max-w-lg animate-rd-fade-up delay-200">
-              500+ students. 98% first-try pass rate. A simple philosophy: meet
-              every driver where they are, and build them up from there.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About Ricky"
+        title={<>The instructor Orange County <span className="marker marker-animate">trusts.</span></>}
+        description="500+ students. 98% first-try pass rate. A simple philosophy: meet every driver where they are, and build them up from there."
+      />
 
       {/* ── Bio ── */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-24 sm:py-32 bg-[#FFFDF8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Portrait */}
-            <div className="relative" data-reveal="left">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-navy shadow-xl">
+            <div className="lg:col-span-5 relative max-w-md mx-auto w-full" data-reveal="left">
+              <div className="relative aspect-[4/5] rounded-[36px] overflow-hidden bg-ink shadow-[0_40px_80px_-30px_rgba(21,23,28,0.6)] -rotate-[1.5deg]">
                 <Image
                   src="/images/ricky.webp"
                   alt="Ricky DeVera, driving instructor"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 90vw, 28rem"
                   className="object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-gold rounded-2xl p-6 shadow-xl hidden sm:block">
-                <p className="text-navy text-3xl font-black">10+</p>
-                <p className="text-navy text-xs font-bold uppercase tracking-widest">
-                  Years Teaching
-                </p>
+              <div className="absolute -bottom-8 -right-3 sm:-right-8 sign-plate px-7 py-5 text-white">
+                <span className="block font-display font-black text-4xl leading-none">10+</span>
+                <span className="block mt-1 text-[11px] font-bold uppercase tracking-[0.2em] text-white/80">
+                  Years teaching
+                </span>
               </div>
             </div>
 
             {/* Story */}
-            <div data-reveal="right">
-              <h2 className="text-4xl sm:text-5xl font-black text-navy mb-6 text-balance">
+            <div className="lg:col-span-7" data-reveal="right">
+              <span className="eyebrow mb-5">My story</span>
+              <h2 className="text-5xl sm:text-6xl font-black text-ink leading-[0.98] mb-8 text-balance">
                 Hi, I&apos;m Ricky.
               </h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <div className="space-y-5 text-ink-soft text-lg leading-relaxed">
                 <p>
                   I&apos;ve spent the last decade teaching Orange County
                   residents — teens, adults, and everyone in between — how to
                   drive. What started as helping a few family friends turned
                   into 500+ students and a school that&apos;s now known across
-                  OC for one thing: patience.
+                  OC for one thing: <span className="font-bold text-ink">patience.</span>
                 </p>
                 <p>
                   Every driver I meet is different. Some have never touched a
@@ -160,42 +136,43 @@ export default function AboutPage() {
                   experience with another instructor or a parent who
                   couldn&apos;t stay calm in the passenger seat.
                 </p>
-                <p>
+                <p className="font-display text-2xl font-bold text-ink leading-snug border-l-4 border-lane pl-5">
                   My job is simple: make you feel safe enough to learn. The
-                  rest follows naturally. By your last lesson, you&apos;re not
-                  just driving — you&apos;re a driver.
+                  rest follows naturally.
+                </p>
+                <p>
+                  By your last lesson, you&apos;re not just driving —
+                  you&apos;re a driver.
                 </p>
               </div>
 
               {/* Signature */}
-              <div className="mt-7 pt-6 border-t border-gray-100">
-                <p className="text-navy font-bold">Ricky DeVera</p>
-                <p className="text-gold-dark text-sm font-medium">
-                  Owner & Lead Instructor
-                </p>
+              <div className="mt-9 pt-7 border-t border-ink/10 flex items-center gap-4">
+                <span className="w-12 h-12 rounded-full bg-lane flex items-center justify-center font-display font-black text-xl text-ink">
+                  R
+                </span>
+                <div>
+                  <p className="text-ink font-display font-black text-lg">Ricky DeVera</p>
+                  <p className="text-sign text-sm font-semibold">Owner &amp; Lead Instructor</p>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Credentials */}
-          <div className="mt-20 sm:mt-24">
-            <h3 className="text-2xl sm:text-3xl font-black text-navy mb-8 text-center" data-reveal="up">
-              Credentials & Experience
+      {/* ── Credentials ── */}
+      <section className="pb-24 sm:pb-32 bg-[#FFFDF8]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="sign-plate p-8 sm:p-12 text-white" data-reveal="zoom">
+            <h3 className="text-3xl sm:text-4xl font-black mb-8 text-center">
+              Credentials &amp; experience
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
-              {credentials.map((c, i) => (
-                <div
-                  key={c}
-                  className="flex items-start gap-3 bg-off-white rounded-xl p-4 border border-gray-100"
-                  data-reveal="up"
-                  data-reveal-delay={i * 60}
-                >
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gold flex items-center justify-center mt-0.5">
-                    <svg
-                      className="w-3.5 h-3.5 text-navy"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+              {credentials.map((c) => (
+                <div key={c} className="flex items-start gap-3 py-2 border-b border-white/15">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-lane flex items-center justify-center mt-0.5">
+                    <svg className="w-3.5 h-3.5 text-ink" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path
                         fillRule="evenodd"
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -203,9 +180,7 @@ export default function AboutPage() {
                       />
                     </svg>
                   </span>
-                  <span className="text-navy text-sm font-medium leading-relaxed">
-                    {c}
-                  </span>
+                  <span className="text-white/90 font-medium leading-relaxed">{c}</span>
                 </div>
               ))}
             </div>
@@ -214,68 +189,41 @@ export default function AboutPage() {
       </section>
 
       {/* ── Values ── */}
-      <section className="py-20 sm:py-24 bg-off-white">
+      <section className="py-24 sm:py-32 paper-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14" data-reveal="up">
-            <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
-              What I Stand For
-            </h2>
-            <p className="text-gray-500 text-lg max-w-xl mx-auto">
-              Four principles that guide every lesson, every student, every time.
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="What I stand for"
+            title="Four rules of the road."
+            description="The principles that guide every lesson, every student, every time."
+            className="mb-16"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v, i) => (
               <div
                 key={v.title}
-                className="group p-8 rounded-2xl bg-white border border-gray-100 hover:border-gold/40 hover:shadow-lg hover-lift"
+                className="group flex gap-6 p-8 sm:p-9 rounded-[28px] bg-white ring-1 ring-ink/5 shadow-[0_20px_40px_-32px_rgba(21,23,28,0.5)] hover-lift"
                 data-reveal="up"
                 data-reveal-delay={i * 100}
               >
-                <div className="w-14 h-14 rounded-xl bg-navy flex items-center justify-center text-gold mb-5 group-hover:bg-gold group-hover:text-navy transition-colors">
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-lane flex items-center justify-center text-ink transition-transform group-hover:-rotate-6">
                   {v.icon}
                 </div>
-                <h3 className="text-xl font-bold text-navy mb-2">{v.title}</h3>
-                <p className="text-gray-500 leading-relaxed text-sm">{v.body}</p>
+                <div>
+                  <h3 className="text-2xl font-black text-ink mb-2">{v.title}</h3>
+                  <p className="text-ink-soft leading-relaxed">{v.body}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="relative overflow-hidden bg-navy py-20 sm:py-24">
-        <div className="absolute -right-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
-        <div className="absolute -left-32 -bottom-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
-
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center" data-reveal="up">
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-5 text-balance">
-            Ready to learn with Ricky?
-          </h2>
-          <p className="text-gray-300 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-            Lessons book up fast — especially during summer and DMV test
-            season. Lock in your spot today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/booking"
-              className="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-navy font-black px-10 py-4 rounded-xl text-base transition-all shadow-xl hover:-translate-y-0.5"
-            >
-              Book a Lesson
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center gap-2 bg-transparent text-white border border-white/30 hover:border-white font-bold px-10 py-4 rounded-xl text-base transition-all"
-            >
-              Browse Packages
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaSign
+        title="Ready to learn with Ricky?"
+        body="Lessons book up fast — especially during summer and DMV test season. Lock in your spot today."
+        secondary={{ label: "Browse packages", href: "/services" }}
+      />
     </>
   );
 }

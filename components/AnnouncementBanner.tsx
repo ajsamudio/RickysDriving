@@ -8,13 +8,16 @@ export default function AnnouncementBanner() {
   if (dismissed) return null;
 
   return (
-    <div className="bg-gold text-navy text-sm font-semibold py-2.5 px-4 flex items-center justify-center gap-3 relative">
-      <span className="text-base">🎓</span>
-      <span>
+    <div className="asphalt text-white text-[13px] font-medium py-2.5 pl-4 pr-10 flex items-center justify-center gap-3 relative">
+      <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-lane text-ink px-2.5 py-0.5 text-[11px] font-black uppercase tracking-wider">
+        <span className="w-1.5 h-1.5 rounded-full bg-ink animate-pulse" />
+        Enrolling
+      </span>
+      <span className="text-white/80">
         Now accepting new students for summer and fall — limited spots available.{" "}
         <a
           href="/booking"
-          className="underline underline-offset-2 hover:text-navy/70 transition-colors"
+          className="text-lane font-semibold underline-offset-4 hover:underline"
         >
           Book today →
         </a>
@@ -22,7 +25,7 @@ export default function AnnouncementBanner() {
       <button
         onClick={() => setDismissed(true)}
         aria-label="Dismiss announcement"
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-navy/60 hover:text-navy transition-colors text-lg leading-none"
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors text-lg leading-none"
       >
         ×
       </button>

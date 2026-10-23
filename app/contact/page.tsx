@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import PageHero from "@/components/PageHero";
+import SectionHeading from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -79,81 +81,78 @@ const ocCities = [
 export default function ContactPage() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-navy relative overflow-hidden">
-        <div className="absolute -right-32 -bottom-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest animate-rd-fade-up">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-              Contact
-            </span>
-            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance animate-rd-fade-up delay-100">
-              Let&apos;s <span className="rd-shimmer">talk</span>.
-            </h1>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-xl animate-rd-fade-up delay-200">
-              Questions about packages? Picking the right lesson? Ready to
-              book? Send a message — Ricky reads them all personally.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title={<>Let&apos;s <span className="marker marker-animate">talk.</span></>}
+        description="Questions about packages? Picking the right lesson? Ready to book? Send a message — Ricky reads them all personally."
+        image={{
+          src: "/images/keys-handoff.webp",
+          alt: "Car keys being handed over in warm afternoon light",
+        }}
+      />
 
       {/* ── Contact grid ── */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-24 sm:py-28 bg-[#FFFDF8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-14">
             {/* Left: contact info cards */}
-            <div className="lg:col-span-2 space-y-4">
-              <div className="mb-6" data-reveal="left">
-                <h2 className="text-3xl sm:text-4xl font-black text-navy mb-3">
+            <div className="lg:col-span-2">
+              <div className="mb-8" data-reveal="left">
+                <span className="eyebrow mb-4">Reach out</span>
+                <h2 className="text-4xl sm:text-5xl font-black text-ink mb-4 leading-[1]">
                   Get in touch
                 </h2>
-                <p className="text-gray-500 leading-relaxed">
+                <p className="text-ink-soft text-lg leading-relaxed">
                   Text is the fastest way to reach Ricky during lesson hours.
-                  Email and the form below are checked daily.
+                  Email and the form are checked daily.
                 </p>
               </div>
 
-              {contactCards.map((c, i) => {
-                const inner = (
-                  <>
-                    <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-navy text-gold flex items-center justify-center">
-                      {c.icon}
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
-                        {c.label}
-                      </p>
-                      <p className="text-navy font-bold">{c.value}</p>
-                      {c.note && (
-                        <p className="text-sm text-gray-500 mt-1">{c.note}</p>
-                      )}
-                    </div>
-                  </>
-                );
+              <div className="space-y-3">
+                {contactCards.map((c, i) => {
+                  const inner = (
+                    <>
+                      <div
+                        className={`flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center ${
+                          c.href ? "bg-lane text-ink" : "bg-paper text-ink"
+                        }`}
+                      >
+                        {c.icon}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-soft mb-0.5">
+                          {c.label}
+                        </p>
+                        <p className="text-ink font-display font-bold text-lg truncate">{c.value}</p>
+                        {c.note && (
+                          <p className="text-sm text-ink-soft mt-0.5">{c.note}</p>
+                        )}
+                      </div>
+                    </>
+                  );
 
-                return c.href ? (
-                  <a
-                    key={c.label}
-                    href={c.href}
-                    className="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 bg-white hover:border-gold/40 hover:shadow-md hover-lift"
-                    data-reveal="left"
-                    data-reveal-delay={80 + i * 80}
-                  >
-                    {inner}
-                  </a>
-                ) : (
-                  <div
-                    key={c.label}
-                    className="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 bg-off-white"
-                    data-reveal="left"
-                    data-reveal-delay={80 + i * 80}
-                  >
-                    {inner}
-                  </div>
-                );
-              })}
+                  return c.href ? (
+                    <a
+                      key={c.label}
+                      href={c.href}
+                      className="flex items-center gap-4 p-5 rounded-[22px] bg-white ring-1 ring-ink/10 hover:ring-lane hover:shadow-[0_20px_40px_-28px_rgba(21,23,28,0.5)] hover-lift"
+                      data-reveal="left"
+                      data-reveal-delay={80 + i * 80}
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <div
+                      key={c.label}
+                      className="flex items-center gap-4 p-5 rounded-[22px] bg-paper/60 ring-1 ring-ink/5"
+                      data-reveal="left"
+                      data-reveal-delay={80 + i * 80}
+                    >
+                      {inner}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Right: form */}
@@ -165,31 +164,27 @@ export default function ContactPage() {
       </section>
 
       {/* ── Service area ── */}
-      <section className="py-20 bg-off-white">
+      <section className="py-24 paper-grid">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10" data-reveal="up">
-            <h2 className="text-3xl sm:text-4xl font-black text-navy mb-3">
-              Serving all of Orange County
-            </h2>
-            <p className="text-gray-500 leading-relaxed max-w-xl mx-auto">
-              Pickup & drop-off included anywhere in OC. If you&apos;re here,
-              Ricky comes to you.
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="Service area"
+            title="Serving all of Orange County."
+            description="Pickup & drop-off included anywhere in OC. If you're here, Ricky comes to you."
+            className="mb-12"
+          />
 
-          <div className="flex flex-wrap gap-2 justify-center max-w-3xl mx-auto">
+          <div className="flex flex-wrap gap-2.5 justify-center max-w-3xl mx-auto">
             {ocCities.map((city, i) => (
               <span
                 key={city}
-                className="inline-flex items-center gap-2 bg-white border border-gray-200 px-4 py-2 rounded-full text-sm text-navy font-medium"
+                className="inline-flex items-center gap-2 bg-sign text-white px-4 py-2 rounded-lg text-sm font-display font-bold ring-2 ring-inset ring-white/70 shadow-sm"
                 data-reveal="up"
                 data-reveal-delay={i * 30}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
                 {city}
               </span>
             ))}
-            <span className="inline-flex items-center gap-2 bg-navy text-white border border-navy px-4 py-2 rounded-full text-sm font-medium">
+            <span className="inline-flex items-center gap-2 bg-lane text-ink px-4 py-2 rounded-lg text-sm font-display font-bold shadow-sm">
               + everywhere else in OC
             </span>
           </div>

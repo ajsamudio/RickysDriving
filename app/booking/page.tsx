@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import BookingWizard from "@/components/booking/BookingWizard";
+import PageHero from "@/components/PageHero";
 import type { Service, Availability, BlockedDate } from "@/lib/types";
 
 export const metadata: Metadata = {
@@ -41,32 +42,18 @@ export default async function BookingPage({ searchParams }: PageProps) {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-navy relative overflow-hidden">
-        <div className="absolute -right-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 uppercase tracking-widest animate-rd-fade-up">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-              Book a Lesson
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] mb-4 text-balance animate-rd-fade-up delay-100">
-              Three steps. <span className="rd-shimmer">Two minutes.</span>
-            </h1>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-xl animate-rd-fade-up delay-200">
-              Pick a package, choose a time that works for you, and pay
-              securely. You&apos;ll get a confirmation email instantly.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Book a lesson"
+        title={<>Three steps. <span className="marker marker-animate">Two minutes.</span></>}
+        description="Pick a package, choose a time that works for you, and pay securely. You'll get a confirmation email instantly."
+      />
 
       {/* Wizard */}
-      <section className="py-12 sm:py-16 bg-off-white min-h-[60vh]">
+      <section className="py-14 sm:py-20 paper-grid min-h-[60vh]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {searchParams.cancelled === "1" && (
-            <div className="bg-white border border-gold/40 rounded-2xl p-4 mb-6 text-sm text-navy flex items-start gap-3">
-              <span className="w-6 h-6 rounded-full bg-gold/20 text-gold-dark flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="bg-white ring-2 ring-lane rounded-[20px] p-4 mb-6 text-sm text-ink flex items-start gap-3">
+              <span className="w-6 h-6 rounded-full bg-lane/20 text-lane-dark flex items-center justify-center flex-shrink-0 mt-0.5">
                 ℹ
               </span>
               <p className="leading-relaxed">
@@ -97,21 +84,21 @@ export default async function BookingPage({ searchParams }: PageProps) {
 
 function SetupNotice() {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-8 sm:p-10 text-center">
-      <div className="w-14 h-14 rounded-full bg-gold/15 text-gold-dark mx-auto mb-5 flex items-center justify-center text-2xl">
+    <div className="bg-white ring-1 ring-ink/10 rounded-[28px] p-8 sm:p-12 text-center shadow-[0_20px_40px_-30px_rgba(21,23,28,0.4)]">
+      <div className="w-14 h-14 rounded-full bg-lane/15 text-lane-dark mx-auto mb-5 flex items-center justify-center text-2xl">
         ⚙
       </div>
-      <h2 className="text-2xl font-black text-navy mb-3">
+      <h2 className="text-2xl font-black text-ink mb-3">
         Booking is almost ready.
       </h2>
       <p className="text-gray-500 leading-relaxed max-w-md mx-auto mb-6">
         Supabase isn&apos;t connected yet (or no services/availability are
         configured). Set the environment variables in{" "}
-        <code className="bg-off-white px-1.5 py-0.5 rounded text-navy text-sm">
+        <code className="bg-paper px-1.5 py-0.5 rounded text-ink text-sm">
           .env.local
         </code>{" "}
         and run the SQL in{" "}
-        <code className="bg-off-white px-1.5 py-0.5 rounded text-navy text-sm">
+        <code className="bg-paper px-1.5 py-0.5 rounded text-ink text-sm">
           supabase/schema.sql
         </code>
         .

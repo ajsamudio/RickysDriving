@@ -36,7 +36,7 @@ export default async function AdminBookingsPage({ searchParams }: PageProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-black text-navy mb-1">Bookings</h1>
+        <h1 className="text-3xl font-black text-ink mb-1">Bookings</h1>
         <p className="text-gray-500">
           Every paid lesson, in chronological order.
         </p>

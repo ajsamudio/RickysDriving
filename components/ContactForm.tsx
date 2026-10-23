@@ -49,9 +49,9 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-white rounded-2xl border border-gold/40 shadow-md p-8 sm:p-10 text-center">
-        <div className="w-14 h-14 rounded-full bg-gold mx-auto flex items-center justify-center mb-5">
-          <svg className="w-7 h-7 text-navy" fill="currentColor" viewBox="0 0 20 20">
+      <div className="bg-white rounded-[28px] ring-2 ring-lane shadow-[0_30px_60px_-35px_rgba(21,23,28,0.5)] p-8 sm:p-12 text-center">
+        <div className="w-14 h-14 rounded-full bg-lane mx-auto flex items-center justify-center mb-5">
+          <svg className="w-7 h-7 text-ink" fill="currentColor" viewBox="0 0 20 20">
             <path
               fillRule="evenodd"
               d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -59,15 +59,15 @@ export default function ContactForm() {
             />
           </svg>
         </div>
-        <h3 className="text-2xl font-black text-navy mb-2">Message sent!</h3>
-        <p className="text-gray-500 leading-relaxed">
+        <h3 className="text-3xl font-black text-ink mb-2">Message sent!</h3>
+        <p className="text-ink-soft leading-relaxed">
           Ricky reads every message himself and will reach out within 24 hours
           — usually much sooner.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-gold-dark hover:text-navy font-semibold text-sm transition-colors"
+          className="mt-6 text-lane-dark hover:text-ink font-semibold text-sm transition-colors"
         >
           Send another message
         </button>
@@ -78,11 +78,11 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 space-y-5"
+      className="bg-white rounded-[28px] ring-1 ring-ink/10 shadow-[0_30px_60px_-35px_rgba(21,23,28,0.5)] p-6 sm:p-10 space-y-5"
       noValidate
     >
       <div>
-        <label htmlFor="name" className="block text-sm font-semibold text-navy mb-2">
+        <label htmlFor="name" className="block text-sm font-semibold text-ink mb-2">
           Your name
         </label>
         <input
@@ -92,14 +92,14 @@ export default function ContactForm() {
           autoComplete="name"
           required
           disabled={status === "submitting"}
-          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all text-navy disabled:bg-gray-50"
+          className="w-full px-4 py-3.5 rounded-2xl bg-paper/60 border border-ink/10 focus:bg-white focus:border-ink focus:ring-4 focus:ring-lane/40 outline-none transition-all text-ink disabled:bg-gray-50"
           placeholder="Alex Johnson"
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="email" className="block text-sm font-semibold text-navy mb-2">
+          <label htmlFor="email" className="block text-sm font-semibold text-ink mb-2">
             Email
           </label>
           <input
@@ -109,13 +109,13 @@ export default function ContactForm() {
             autoComplete="email"
             required
             disabled={status === "submitting"}
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all text-navy disabled:bg-gray-50"
+            className="w-full px-4 py-3.5 rounded-2xl bg-paper/60 border border-ink/10 focus:bg-white focus:border-ink focus:ring-4 focus:ring-lane/40 outline-none transition-all text-ink disabled:bg-gray-50"
             placeholder="you@email.com"
           />
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-semibold text-navy mb-2">
-            Phone <span className="text-gray-400 font-normal">(optional)</span>
+          <label htmlFor="phone" className="block text-sm font-semibold text-ink mb-2">
+            Phone <span className="text-ink-soft/80 font-normal">(optional)</span>
           </label>
           <input
             id="phone"
@@ -123,13 +123,13 @@ export default function ContactForm() {
             type="tel"
             autoComplete="tel"
             disabled={status === "submitting"}
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all text-navy disabled:bg-gray-50"
+            className="w-full px-4 py-3.5 rounded-2xl bg-paper/60 border border-ink/10 focus:bg-white focus:border-ink focus:ring-4 focus:ring-lane/40 outline-none transition-all text-ink disabled:bg-gray-50"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-navy mb-2">
+        <label htmlFor="message" className="block text-sm font-semibold text-ink mb-2">
           What can Ricky help with?
         </label>
         <textarea
@@ -138,7 +138,7 @@ export default function ContactForm() {
           rows={5}
           required
           disabled={status === "submitting"}
-          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all text-navy resize-y disabled:bg-gray-50"
+          className="w-full px-4 py-3.5 rounded-2xl bg-paper/60 border border-ink/10 focus:bg-white focus:border-ink focus:ring-4 focus:ring-lane/40 outline-none transition-all text-ink resize-y disabled:bg-gray-50"
           placeholder="I just got my permit and would love to get started — what's the best package for a total beginner?"
         />
       </div>
@@ -152,7 +152,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark disabled:opacity-60 disabled:cursor-not-allowed text-navy font-bold py-3.5 rounded-xl transition-all shadow-md"
+        className="btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {status === "submitting" ? (
           <>
@@ -187,7 +187,7 @@ export default function ContactForm() {
         )}
       </button>
 
-      <p className="text-xs text-gray-400 text-center">
+      <p className="text-xs text-ink-soft/80 text-center">
         By submitting, you agree to be contacted about driving lessons. We
         don&apos;t share your info — ever.
       </p>

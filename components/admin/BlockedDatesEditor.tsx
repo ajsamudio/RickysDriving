@@ -74,8 +74,8 @@ export default function BlockedDatesEditor({ initialRows }: Props) {
 
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-      <div className="px-6 py-5 border-b border-gray-100 bg-off-white">
-        <h2 className="text-base font-black text-navy mb-4">Add a blocked date</h2>
+      <div className="px-6 py-5 border-b border-gray-100 bg-paper">
+        <h2 className="text-base font-black text-ink mb-4">Add a blocked date</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-end">
           <label className="block sm:col-span-1">
             <span className="block text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1.5">
@@ -108,7 +108,7 @@ export default function BlockedDatesEditor({ initialRows }: Props) {
             type="button"
             onClick={handleAdd}
             disabled={busy || !date}
-            className="bg-gold hover:bg-gold-dark disabled:opacity-50 disabled:cursor-not-allowed text-navy font-bold text-sm py-2.5 px-4 rounded-lg transition-colors"
+            className="bg-lane hover:bg-lane-strong disabled:opacity-50 disabled:cursor-not-allowed text-ink font-bold text-sm py-2.5 px-4 rounded-lg transition-colors"
           >
             Block date
           </button>
@@ -133,7 +133,7 @@ export default function BlockedDatesEditor({ initialRows }: Props) {
               className="px-6 py-4 flex items-center justify-between gap-4"
             >
               <div className="min-w-0">
-                <p className="text-navy font-bold">
+                <p className="text-ink font-bold">
                   {formatDate(row.blocked_date)}
                 </p>
                 {row.reason && (
@@ -159,15 +159,15 @@ export default function BlockedDatesEditor({ initialRows }: Props) {
           padding: 0.625rem 0.75rem;
           border-radius: 0.5rem;
           border: 1px solid #e5e7eb;
-          color: #0a1628;
+          color: #15171c;
           font-size: 0.9rem;
           background: #ffffff;
           transition: border-color 0.15s, box-shadow 0.15s;
         }
         :global(.admin-input:focus) {
           outline: none;
-          border-color: #c9a84c;
-          box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+          border-color: #15171c;
+          box-shadow: 0 0 0 3px rgba(255, 194, 26, 0.4);
         }
       `}</style>
     </div>

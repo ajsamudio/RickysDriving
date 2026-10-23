@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
-
 @layer base {
   * {
     box-sizing: border-box;
@@ -14,33 +12,125 @@
   }
 
   body {
-    font-family: "Inter", sans-serif;
-    background-color: #ffffff;
-    color: #0a1628;
+    background-color: #fffdf8;
+    color: #15171c;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), "Overpass", sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: #ffc21a;
+    color: #15171c;
+  }
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Buttons
+ * ──────────────────────────────────────────────────────────────────────── */
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-200;
+  }
+  .btn-sm {
+    @apply px-5 py-2.5 text-sm;
+  }
+  .btn-primary {
+    @apply btn bg-lane text-ink shadow-[0_6px_0_-1px_#c48f00] hover:-translate-y-0.5 hover:bg-lane-light hover:shadow-[0_8px_0_-1px_#c48f00] active:translate-y-0.5 active:shadow-[0_2px_0_-1px_#c48f00];
+  }
+  .btn-dark {
+    @apply btn bg-ink text-white hover:-translate-y-0.5 hover:bg-ink-light;
+  }
+  .btn-outline {
+    @apply btn border-2 border-ink/15 text-ink hover:border-ink hover:bg-ink hover:text-white;
+  }
+  .btn-ghost-light {
+    @apply btn border-2 border-white/25 text-white hover:border-white hover:bg-white hover:text-ink;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.18em] text-sign;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-[3px] w-6 rounded-full bg-lane;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Road motifs
+ * ──────────────────────────────────────────────────────────────────────── */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 
-  .gold-underline {
-    position: relative;
-    display: inline-block;
+  /* Highlighter stroke that sits under a word, like fresh lane paint */
+  .marker {
+    background-image: linear-gradient(
+      transparent 58%,
+      #ffc21a 58%,
+      #ffc21a 90%,
+      transparent 90%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 0 0.08em;
+    margin: 0 -0.08em;
+  }
+  .marker-animate {
+    background-size: 0% 100%;
+    animation: rd-marker 900ms cubic-bezier(0.22, 1, 0.36, 1) 450ms forwards;
   }
 
-  .gold-underline::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: #c9a84c;
-    border-radius: 2px;
+  /* Dashed center line */
+  .lane-dash {
+    background-image: repeating-linear-gradient(
+      90deg,
+      #ffc21a 0 44px,
+      transparent 44px 76px
+    );
+    height: 4px;
+  }
+  .lane-dash-animate {
+    animation: rd-drive 1.6s linear infinite;
+  }
+
+  /* Asphalt surface with a faint aggregate texture */
+  .asphalt {
+    background-color: #15171c;
+    background-image:
+      radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 7px 7px, 13px 13px;
+    background-position: 0 0, 3px 5px;
+  }
+
+  /* Freeway-sign plate: green field with an inset white rule */
+  .sign-plate {
+    background-color: #0b6b43;
+    border-radius: 1.25rem;
+    box-shadow:
+      inset 0 0 0 6px #0b6b43,
+      inset 0 0 0 8px rgba(255, 255, 255, 0.92),
+      0 24px 50px -24px rgba(8, 80, 47, 0.6);
+  }
+
+  .paper-grid {
+    background-color: #f5f1e8;
+    background-image:
+      linear-gradient(rgba(21, 23, 28, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(21, 23, 28, 0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
   }
 }
 
@@ -82,7 +172,7 @@
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
- * Hero & accent entrance animations (mount-time, no JS observer)
+ * Entrance animations (mount-time, no JS observer)
  * ──────────────────────────────────────────────────────────────────────── */
 
 @keyframes rd-fade-up {
@@ -105,21 +195,25 @@
   }
 }
 
-@keyframes rd-grow-line {
-  from {
-    transform: scaleX(0);
-  }
+@keyframes rd-marker {
   to {
-    transform: scaleX(1);
+    background-size: 100% 100%;
   }
 }
 
-@keyframes rd-shine {
-  0% {
-    background-position: -200% center;
+@keyframes rd-drive {
+  to {
+    background-position: -76px 0;
   }
+}
+
+@keyframes rd-float {
+  0%,
   100% {
-    background-position: 200% center;
+    transform: translateY(0) rotate(var(--rd-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(var(--rd-rotate, 0deg));
   }
 }
 
@@ -129,24 +223,8 @@
 .animate-rd-fade-in {
   animation: rd-fade-in 900ms ease-out both;
 }
-.animate-rd-grow-line {
-  transform-origin: left center;
-  animation: rd-grow-line 900ms cubic-bezier(0.22, 1, 0.36, 1) 250ms both;
-}
-
-.rd-shimmer {
-  background: linear-gradient(
-    90deg,
-    #c9a84c 0%,
-    #f0d97a 45%,
-    #c9a84c 55%,
-    #c9a84c 100%
-  );
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rd-shine 6s linear infinite;
+.animate-rd-float {
+  animation: rd-float 6s ease-in-out infinite;
 }
 
 /* Stagger helpers — combine with .animate-rd-fade-up */
@@ -163,7 +241,7 @@
     box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .hover-lift:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 /* Animated underline that grows from left on hover (for links) */
@@ -175,16 +253,17 @@
   content: "";
   position: absolute;
   left: 0;
-  bottom: -2px;
+  bottom: -3px;
   width: 100%;
-  height: 2px;
-  background: #c9a84c;
+  height: 3px;
+  background: #ffc21a;
   border-radius: 2px;
   transform: scaleX(0);
   transform-origin: right center;
   transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.rd-link:hover::after {
+.rd-link:hover::after,
+.rd-link[aria-current="page"]::after {
   transform: scaleX(1);
   transform-origin: left center;
 }
@@ -201,5 +280,8 @@
   [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
+  }
+  .marker-animate {
+    background-size: 100% 100%;
   }
 }

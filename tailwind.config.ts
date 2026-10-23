@@ -9,23 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          DEFAULT: "#0A1628",
-          light: "#12203d",
+        // Asphalt — primary text and dark surfaces
+        ink: {
+          DEFAULT: "#15171C",
+          light: "#23262E",
+          soft: "#5B5F6A",
         },
-        gold: {
-          DEFAULT: "#C9A84C",
-          light: "#d9bc72",
-          dark: "#a8872e",
+        // Lane-line yellow — calls to action and highlights
+        lane: {
+          DEFAULT: "#FFC21A",
+          light: "#FFD45C",
+          strong: "#F2AF00",
+          dark: "#8A6200",
         },
-        "off-white": "#F8F8F6",
+        // Freeway-sign green — badges, signage, secondary accents
+        sign: {
+          DEFAULT: "#0B6B43",
+          light: "#12844F",
+          dark: "#08502F",
+        },
+        paper: "#F5F1E8",
       },
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
-      },
-      backgroundImage: {
-        "gold-gradient":
-          "linear-gradient(135deg, #C9A84C 0%, #d9bc72 50%, #C9A84C 100%)",
+        inter: ["var(--font-inter)", "Inter", "sans-serif"],
+        display: ["var(--font-display)", "Overpass", "sans-serif"],
       },
     },
   },

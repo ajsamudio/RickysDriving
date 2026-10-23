@@ -19,9 +19,9 @@ const filters: { key: "upcoming" | "past" | "all"; label: string }[] = [
 
 const STATUS_STYLE: Record<BookingStatus, string> = {
   pending: "bg-gray-100 text-gray-600",
-  confirmed: "bg-gold/20 text-gold-dark",
+  confirmed: "bg-lane/20 text-lane-dark",
   cancelled: "bg-red-50 text-red-700",
-  completed: "bg-navy/10 text-navy",
+  completed: "bg-ink/10 text-ink",
 };
 
 export default function BookingsTable({
@@ -44,8 +44,8 @@ export default function BookingsTable({
               className={cn(
                 "px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors",
                 active
-                  ? "bg-navy text-white"
-                  : "text-navy/60 hover:text-navy"
+                  ? "bg-ink text-white"
+                  : "text-ink/60 hover:text-ink"
               )}
             >
               {f.label}
@@ -68,11 +68,11 @@ export default function BookingsTable({
                   <button
                     type="button"
                     onClick={() => setExpanded(isOpen ? null : b.id)}
-                    className="w-full text-left px-6 py-4 flex items-center justify-between gap-4 hover:bg-off-white transition-colors"
+                    className="w-full text-left px-6 py-4 flex items-center justify-between gap-4 hover:bg-paper transition-colors"
                   >
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <p className="text-navy font-bold truncate">
+                        <p className="text-ink font-bold truncate">
                           {b.customer_name}
                         </p>
                         <span
@@ -93,10 +93,10 @@ export default function BookingsTable({
                       </p>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-navy font-semibold text-sm">
+                      <p className="text-ink font-semibold text-sm">
                         {formatDate(b.scheduled_at)}
                       </p>
-                      <p className="text-xs text-gold-dark">
+                      <p className="text-xs text-lane-dark">
                         {formatTime(b.scheduled_at)} PT
                       </p>
                     </div>
@@ -119,14 +119,14 @@ export default function BookingsTable({
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-5 bg-off-white border-t border-gray-100">
+                    <div className="px-6 pb-5 bg-paper border-t border-gray-100">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 pt-4">
                         <Detail
                           label="Email"
                           value={
                             <a
                               href={`mailto:${b.customer_email}`}
-                              className="text-gold-dark hover:text-navy transition-colors"
+                              className="text-lane-dark hover:text-ink transition-colors"
                             >
                               {b.customer_email}
                             </a>
@@ -137,7 +137,7 @@ export default function BookingsTable({
                           value={
                             <a
                               href={`tel:${b.customer_phone}`}
-                              className="text-gold-dark hover:text-navy transition-colors"
+                              className="text-lane-dark hover:text-ink transition-colors"
                             >
                               {b.customer_phone}
                             </a>
@@ -153,7 +153,7 @@ export default function BookingsTable({
                             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
                               Notes
                             </p>
-                            <p className="text-sm text-navy bg-white border border-gray-100 rounded-lg p-3 leading-relaxed">
+                            <p className="text-sm text-ink bg-white border border-gray-100 rounded-lg p-3 leading-relaxed">
                               {b.notes}
                             </p>
                           </div>
@@ -177,7 +177,7 @@ function Detail({ label, value }: { label: string; value: React.ReactNode }) {
       <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-0.5">
         {label}
       </p>
-      <p className="text-sm text-navy">{value}</p>
+      <p className="text-sm text-ink">{value}</p>
     </div>
   );
 }

@@ -163,30 +163,30 @@ export default function BookingWizard({
                   type="button"
                   onClick={() => setSelectedServiceId(s.id)}
                   className={cn(
-                    "text-left rounded-2xl p-6 border-2 transition-all",
+                    "text-left rounded-[24px] p-6 border-2 transition-all",
                     isSelected
-                      ? "border-gold bg-white shadow-lg"
-                      : "border-gray-200 bg-white hover:border-gold/40 hover:shadow-md"
+                      ? "border-ink bg-white shadow-[0_20px_40px_-25px_rgba(21,23,28,0.55)] ring-4 ring-lane/60"
+                      : "border-ink/10 bg-white hover:border-ink/30 hover:shadow-md"
                   )}
                 >
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-lg font-black text-navy">{s.name}</h3>
+                    <h3 className="text-lg font-black text-ink">{s.name}</h3>
                     {isSelected && (
-                      <span className="w-6 h-6 rounded-full bg-gold flex items-center justify-center">
-                        <svg className="w-3.5 h-3.5 text-navy" fill="currentColor" viewBox="0 0 20 20">
+                      <span className="w-6 h-6 rounded-full bg-lane flex items-center justify-center">
+                        <svg className="w-3.5 h-3.5 text-ink" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       </span>
                     )}
                   </div>
-                  <p className="text-3xl font-black text-navy mb-1">
+                  <p className="font-display text-4xl font-black text-ink mb-1">
                     {formatPrice(s.price_cents)}
                   </p>
-                  <p className="text-xs text-gold-dark font-semibold uppercase tracking-widest mb-3">
+                  <p className="text-xs text-lane-dark font-semibold uppercase tracking-widest mb-3">
                     {s.duration_minutes} min
                   </p>
                   {s.description && (
-                    <p className="text-sm text-gray-500 leading-relaxed">
+                    <p className="text-sm text-ink-soft leading-relaxed">
                       {s.description}
                     </p>
                   )}
@@ -213,11 +213,11 @@ export default function BookingWizard({
             </div>
             <div className="lg:col-span-2">
               {selectedDate ? (
-                <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-7 h-full">
+                <div className="bg-white rounded-[24px] ring-1 ring-ink/10 shadow-[0_20px_40px_-32px_rgba(21,23,28,0.5)] p-6 sm:p-7 h-full">
                   <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
                     Selected day
                   </p>
-                  <p className="text-navy font-black text-lg mb-5">
+                  <p className="text-ink font-black text-lg mb-5">
                     {selectedDate.toLocaleDateString("en-US", {
                       weekday: "long",
                       month: "long",
@@ -232,14 +232,14 @@ export default function BookingWizard({
                   />
                 </div>
               ) : (
-                <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 text-center h-full flex flex-col items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-off-white flex items-center justify-center mb-3">
-                    <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-white rounded-[24px] ring-1 ring-ink/10 shadow-[0_20px_40px_-32px_rgba(21,23,28,0.5)] p-8 text-center h-full flex flex-col items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-paper flex items-center justify-center mb-3">
+                    <svg className="w-6 h-6 text-lane" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <p className="text-navy font-semibold">Pick a date</p>
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-ink font-semibold">Pick a date</p>
+                  <p className="text-ink-soft text-sm">
                     Available times will appear here.
                   </p>
                 </div>
@@ -255,7 +255,7 @@ export default function BookingWizard({
           subtitle="We need a way to reach you about your lesson."
         >
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-            <div className="lg:col-span-3 bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-7 space-y-4">
+            <div className="lg:col-span-3 bg-white rounded-[24px] ring-1 ring-ink/10 shadow-[0_20px_40px_-32px_rgba(21,23,28,0.5)] p-6 sm:p-7 space-y-4">
               <Field label="Full name" required>
                 <input
                   type="text"
@@ -309,8 +309,8 @@ export default function BookingWizard({
             </div>
 
             <div className="lg:col-span-2">
-              <div className="bg-navy text-white rounded-2xl shadow-lg p-6 sm:p-7 sticky top-24">
-                <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-4">
+              <div className="asphalt text-white rounded-[24px] shadow-[0_30px_60px_-30px_rgba(21,23,28,0.7)] p-6 sm:p-7 sticky top-24">
+                <p className="text-xs font-semibold uppercase tracking-widest text-lane mb-4">
                   Order Summary
                 </p>
                 <div className="space-y-3 mb-5 pb-5 border-b border-white/10">
@@ -331,7 +331,7 @@ export default function BookingWizard({
                 </div>
                 <div className="flex items-baseline justify-between mb-6">
                   <span className="text-gray-300 text-sm">Total</span>
-                  <span className="text-3xl font-black text-gold">
+                  <span className="font-display text-4xl font-black text-lane">
                     {formatPrice(selectedService.price_cents)}
                   </span>
                 </div>
@@ -339,7 +339,7 @@ export default function BookingWizard({
                   type="button"
                   onClick={handleSubmit}
                   disabled={submitting}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-light disabled:opacity-60 disabled:cursor-not-allowed text-navy font-black py-4 rounded-xl transition-all shadow-md"
+                  className="btn-primary w-full py-4 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {submitting ? (
                     <>
@@ -375,10 +375,10 @@ export default function BookingWizard({
           onClick={() => setStep((s) => (s === 1 ? 1 : ((s - 1) as Step)))}
           disabled={step === 1}
           className={cn(
-            "inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all",
+            "inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all",
             step === 1
               ? "text-gray-300 cursor-not-allowed"
-              : "text-navy border-2 border-navy hover:bg-navy hover:text-white"
+              : "text-ink border-2 border-ink/15 hover:border-ink hover:bg-ink hover:text-white"
           )}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -393,10 +393,10 @@ export default function BookingWizard({
             onClick={() => canAdvance && setStep((s) => (s + 1) as Step)}
             disabled={!canAdvance}
             className={cn(
-              "inline-flex items-center gap-2 px-7 py-3 rounded-xl font-bold text-sm transition-all",
+              "inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm transition-all",
               canAdvance
-                ? "bg-gold hover:bg-gold-dark text-navy shadow-md"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                ? "bg-lane hover:bg-lane-light text-ink shadow-[0_5px_0_-1px_#c48f00] hover:-translate-y-0.5"
+                : "bg-ink/10 text-ink/40 cursor-not-allowed"
             )}
           >
             Continue
@@ -411,17 +411,18 @@ export default function BookingWizard({
         :global(.form-input) {
           width: 100%;
           padding: 0.75rem 1rem;
-          border-radius: 0.75rem;
-          border: 1px solid #e5e7eb;
-          color: #0a1628;
+          border-radius: 1rem;
+          border: 1px solid rgba(21, 23, 28, 0.1);
+          color: #15171c;
           font-size: 0.95rem;
           transition: border-color 0.15s, box-shadow 0.15s;
-          background: #ffffff;
+          background: rgba(245, 241, 232, 0.6);
         }
         :global(.form-input:focus) {
           outline: none;
-          border-color: #c9a84c;
-          box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+          border-color: #15171c;
+          background: #ffffff;
+          box-shadow: 0 0 0 4px rgba(255, 194, 26, 0.4);
         }
         :global(.form-input:disabled) {
           background: #f9fafb;
@@ -444,10 +445,10 @@ function StepIndicator({ step }: { step: Step }) {
           <div className="flex items-center gap-2">
             <div
               className={cn(
-                "w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm transition-all",
-                step === s.n && "bg-gold text-navy ring-4 ring-gold/20",
-                step > s.n && "bg-navy text-white",
-                step < s.n && "bg-white text-gray-400 border border-gray-200"
+                "w-10 h-10 rounded-full flex items-center justify-center font-display font-black transition-all",
+                step === s.n && "bg-lane text-ink ring-4 ring-lane/30",
+                step > s.n && "bg-ink text-white",
+                step < s.n && "bg-white text-ink/40 ring-1 ring-ink/10"
               )}
             >
               {step > s.n ? (
@@ -461,7 +462,7 @@ function StepIndicator({ step }: { step: Step }) {
             <span
               className={cn(
                 "hidden sm:inline text-sm font-semibold transition-colors",
-                step >= s.n ? "text-navy" : "text-gray-400"
+                step >= s.n ? "text-ink" : "text-gray-400"
               )}
             >
               {s.label}
@@ -470,8 +471,8 @@ function StepIndicator({ step }: { step: Step }) {
           {i < steps.length - 1 && (
             <div
               className={cn(
-                "h-0.5 w-8 sm:w-16 mx-2 sm:mx-3 rounded-full transition-colors",
-                step > s.n ? "bg-navy" : "bg-gray-200"
+                "h-1 w-8 sm:w-16 mx-2 sm:mx-3 rounded-full transition-colors",
+                step > s.n ? "bg-ink" : "bg-ink/10"
               )}
             />
           )}
@@ -493,10 +494,10 @@ function StepShell({
   return (
     <div>
       <div className="text-center mb-7">
-        <h2 className="text-3xl sm:text-4xl font-black text-navy mb-2">
+        <h2 className="text-4xl sm:text-5xl font-black text-ink mb-3">
           {title}
         </h2>
-        <p className="text-gray-500">{subtitle}</p>
+        <p className="text-ink-soft">{subtitle}</p>
       </div>
       {children}
     </div>
@@ -514,8 +515,8 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-sm font-semibold text-navy mb-2">
-        {label} {required && <span className="text-gold-dark">*</span>}
+      <span className="block text-sm font-semibold text-ink mb-2">
+        {label} {required && <span className="text-lane-dark">*</span>}
       </span>
       {children}
     </label>

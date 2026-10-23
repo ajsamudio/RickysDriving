@@ -1,38 +1,40 @@
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 const footerLinks = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Booking", href: "/booking" },
+  { label: "About Ricky", href: "/about" },
+  { label: "Lesson packages", href: "/services" },
+  { label: "Book a lesson", href: "/booking" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
+const areas = ["Irvine", "Anaheim", "Santa Ana", "Costa Mesa", "Huntington Beach", "Tustin"];
+
 export default function Footer() {
   return (
-    <footer className="bg-navy text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+    <footer className="asphalt text-white relative overflow-hidden">
+      {/* Center line running along the top edge */}
+      <div className="lane-dash opacity-90" aria-hidden="true" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-14">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <Link href="/" className="inline-block mb-3">
-              <span className="text-white font-black text-xl tracking-tight relative inline-block">
-                Ricky&apos;s Driving
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold rounded-full" />
-              </span>
+          <div className="md:col-span-5">
+            <Link href="/" className="inline-block group" aria-label="Ricky's Driving home">
+              <Logo tone="light" />
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed mt-4 max-w-xs">
-              Orange County&apos;s trusted driving school — building confident,
-              safe drivers one lesson at a time.
+            <p className="text-white/60 text-[15px] leading-relaxed mt-6 max-w-sm">
+              Patient, one-on-one driving lessons that turn nervous beginners
+              into calm, licensed drivers — all across Orange County.
             </p>
-            {/* Social placeholders */}
-            <div className="flex gap-3 mt-5">
+            <div className="flex gap-2.5 mt-7">
               {["Facebook", "Instagram", "YouTube"].map((social) => (
                 <a
                   key={social}
                   href="#"
                   aria-label={social}
-                  className="w-9 h-9 rounded-lg border border-white/20 flex items-center justify-center text-gray-400 hover:border-gold hover:text-gold transition-colors text-xs font-bold"
+                  className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:border-lane hover:bg-lane hover:text-ink transition-colors text-xs font-bold"
                 >
                   {social.charAt(0)}
                 </a>
@@ -41,16 +43,16 @@ export default function Footer() {
           </div>
 
           {/* Nav links */}
-          <div>
-            <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-widest mb-4">
+          <div className="md:col-span-3">
+            <h4 className="text-xs font-bold text-lane uppercase tracking-[0.18em] mb-5">
               Navigate
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-gold text-sm transition-colors"
+                    className="text-white/70 hover:text-white text-[15px] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -60,43 +62,34 @@ export default function Footer() {
           </div>
 
           {/* Contact info */}
-          <div>
-            <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-widest mb-4">
-              Contact
+          <div className="md:col-span-4">
+            <h4 className="text-xs font-bold text-lane uppercase tracking-[0.18em] mb-5">
+              Get in touch
             </h4>
-            <ul className="space-y-2.5 text-sm text-gray-400">
-              <li>Orange County, CA</li>
-              <li>
-                <a
-                  href="mailto:info@rickysdriving.com"
-                  className="hover:text-gold transition-colors"
-                >
-                  info@rickysdriving.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+15624248885"
-                  className="hover:text-gold transition-colors"
-                >
-                  (562) 424-8885
-                </a>
-              </li>
-              <li>
-                <Link
-                  href="/booking"
-                  className="text-gold hover:text-gold-light font-semibold transition-colors"
-                >
-                  Book a Lesson →
-                </Link>
-              </li>
-            </ul>
+            <a
+              href="tel:+15624248885"
+              className="block font-display text-3xl font-black tracking-tight hover:text-lane transition-colors"
+            >
+              (562) 424-8885
+            </a>
+            <a
+              href="mailto:info@rickysdriving.com"
+              className="block mt-2 text-white/70 hover:text-white text-[15px] transition-colors"
+            >
+              info@rickysdriving.com
+            </a>
+            <p className="mt-6 text-sm text-white/50 leading-relaxed">
+              Serving {areas.join(", ")} &amp; all of OC.
+            </p>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
           <p>© {new Date().getFullYear()} Ricky&apos;s Driving. All rights reserved.</p>
-          <p>Orange County, CA</p>
+          <p className="inline-flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-lane" />
+            Licensed California driving instruction
+          </p>
         </div>
       </div>
     </footer>

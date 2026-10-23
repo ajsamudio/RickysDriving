@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FAQAccordion, { FAQItem } from "@/components/FAQAccordion";
+import PageHero from "@/components/PageHero";
+import { ArrowIcon } from "@/components/CtaSign";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -115,78 +117,92 @@ const cancellations: FAQItem[] = [
 ];
 
 const categories = [
-  { title: "Getting Started", items: gettingStarted },
-  { title: "Lessons & Scheduling", items: scheduling },
-  { title: "Pricing & Payment", items: pricing },
-  { title: "DMV Test", items: dmv },
-  { title: "Cancellations & Refunds", items: cancellations },
+  { id: "getting-started", title: "Getting Started", items: gettingStarted },
+  { id: "scheduling", title: "Lessons & Scheduling", items: scheduling },
+  { id: "pricing", title: "Pricing & Payment", items: pricing },
+  { id: "dmv-test", title: "DMV Test", items: dmv },
+  { id: "cancellations", title: "Cancellations & Refunds", items: cancellations },
 ];
 
 export default function FAQPage() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-navy relative overflow-hidden">
-        <div className="absolute -left-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest animate-rd-fade-up">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-              FAQ
-            </span>
-            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance animate-rd-fade-up delay-100">
-              Questions, <span className="rd-shimmer">answered</span>.
-            </h1>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-xl animate-rd-fade-up delay-200">
-              Everything new students ask — permits, packages, DMV test prep,
-              cancellations, and the rest.
-            </p>
+      <PageHero
+        eyebrow="FAQ"
+        title={<>Questions, <span className="marker marker-animate">answered.</span></>}
+        description="Everything new students ask — permits, packages, DMV test prep, cancellations, and the rest."
+      />
+
+      {/* ── FAQ ── */}
+      <section className="py-20 sm:py-28 bg-[#FFFDF8]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Category index */}
+          <aside className="lg:col-span-4">
+            <div className="lg:sticky lg:top-28">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-ink-soft mb-4">
+                Jump to
+              </p>
+              <nav className="flex lg:flex-col flex-wrap gap-2">
+                {categories.map((cat, i) => (
+                  <a
+                    key={cat.id}
+                    href={`#${cat.id}`}
+                    className="group inline-flex items-center gap-3 rounded-full lg:rounded-2xl bg-paper hover:bg-lane px-4 py-2.5 lg:px-5 lg:py-4 text-sm lg:text-base font-semibold text-ink transition-colors"
+                  >
+                    <span className="hidden lg:inline-flex w-7 h-7 rounded-full bg-white text-xs font-black items-center justify-center group-hover:bg-ink group-hover:text-lane transition-colors">
+                      {i + 1}
+                    </span>
+                    {cat.title}
+                  </a>
+                ))}
+              </nav>
+
+              <div className="hidden lg:block mt-8 rounded-[24px] asphalt text-white p-7">
+                <p className="font-display text-2xl font-black leading-tight">
+                  Still have questions?
+                </p>
+                <p className="mt-2 text-white/65 text-sm leading-relaxed">
+                  Ricky reads every message himself and gets back to you
+                  within a day — usually much faster.
+                </p>
+                <a href="tel:+15624248885" className="btn-primary btn-sm mt-5 w-full">
+                  Call (562) 424-8885
+                </a>
+              </div>
+            </div>
+          </aside>
+
+          <div className="lg:col-span-8 space-y-16">
+            {categories.map((cat) => (
+              <div key={cat.id} id={cat.id} className="scroll-mt-28" data-reveal="up">
+                <h2 className="text-3xl sm:text-4xl font-black text-ink mb-4">
+                  {cat.title}
+                </h2>
+                <FAQAccordion items={cat.items} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── FAQ ── */}
-      <section className="py-20 sm:py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {categories.map((cat) => (
-            <div key={cat.title} data-reveal="up">
-              <div className="flex items-center gap-3 mb-7">
-                <span className="w-2 h-8 bg-gold rounded-full" />
-                <h2 className="text-2xl sm:text-3xl font-black text-navy">
-                  {cat.title}
-                </h2>
-              </div>
-              <FAQAccordion items={cat.items} />
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── Still have questions ── */}
-      <section className="py-20 bg-off-white">
+      <section className="py-24 paper-grid">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center" data-reveal="up">
-          <h2 className="text-3xl sm:text-4xl font-black text-navy mb-4">
-            Still have questions?
+          <span className="eyebrow mb-4">Talk to Ricky</span>
+          <h2 className="text-4xl sm:text-5xl font-black text-ink mb-5 text-balance">
+            Didn&apos;t find your answer?
           </h2>
-          <p className="text-gray-500 text-lg mb-8 leading-relaxed">
+          <p className="text-ink-soft text-lg mb-9 leading-relaxed">
             Ricky reads every message himself and gets back to you within a
             day — usually much faster.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-navy hover:bg-navy-light text-white font-bold px-8 py-3.5 rounded-xl transition-all text-sm"
-            >
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/contact" className="btn-dark">
               Contact Ricky
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <ArrowIcon />
             </Link>
-            <Link
-              href="/booking"
-              className="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-navy font-bold px-8 py-3.5 rounded-xl transition-all text-sm shadow-md"
-            >
-              Book a Lesson
+            <Link href="/booking" className="btn-primary">
+              Book a lesson
             </Link>
           </div>
         </div>

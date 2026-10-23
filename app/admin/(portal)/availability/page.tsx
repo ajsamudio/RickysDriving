@@ -17,7 +17,7 @@ export default async function AdminAvailabilityPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-black text-navy mb-1">Weekly Availability</h1>
+        <h1 className="text-3xl font-black text-ink mb-1">Weekly Availability</h1>
         <p className="text-gray-500 max-w-2xl">
           Set the recurring days and time windows you&apos;re available for
           lessons. Customers will only see slots that fall inside these windows.

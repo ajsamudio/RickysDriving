@@ -62,7 +62,7 @@ export default async function AdminDashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-black text-navy mb-1">Dashboard</h1>
+        <h1 className="text-3xl font-black text-ink mb-1">Dashboard</h1>
         <p className="text-gray-500">An overview of your schedule.</p>
       </div>
 
@@ -75,12 +75,12 @@ export default async function AdminDashboardPage() {
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="px-6 py-5 border-b border-gray-100 flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-black text-navy">Next up</h2>
+            <h2 className="text-lg font-black text-ink">Next up</h2>
             <p className="text-sm text-gray-500">Your next 5 confirmed lessons.</p>
           </div>
           <Link
             href="/admin/bookings"
-            className="text-sm font-semibold text-gold-dark hover:text-navy transition-colors"
+            className="text-sm font-semibold text-lane-dark hover:text-ink transition-colors"
           >
             View all →
           </Link>
@@ -97,7 +97,7 @@ export default async function AdminDashboardPage() {
                 className="px-6 py-4 flex items-center justify-between gap-4"
               >
                 <div className="min-w-0">
-                  <p className="text-navy font-semibold truncate">
+                  <p className="text-ink font-semibold truncate">
                     {b.customer_name}
                   </p>
                   <p className="text-sm text-gray-500 truncate">
@@ -105,10 +105,10 @@ export default async function AdminDashboardPage() {
                   </p>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="text-navy font-semibold text-sm">
+                  <p className="text-ink font-semibold text-sm">
                     {formatDate(b.scheduled_at)}
                   </p>
-                  <p className="text-xs text-gold-dark">
+                  <p className="text-xs text-lane-dark">
                     {formatTime(b.scheduled_at)} PT
                   </p>
                 </div>
@@ -144,11 +144,11 @@ function StatCard({
   href?: string;
 }) {
   const card = (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 h-full hover:border-gold/40 transition-colors">
+    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 h-full hover:border-lane/40 transition-colors">
       <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
         {label}
       </p>
-      <p className="text-4xl font-black text-navy">{value}</p>
+      <p className="text-4xl font-black text-ink">{value}</p>
     </div>
   );
   return href ? <Link href={href}>{card}</Link> : card;
@@ -166,11 +166,11 @@ function QuickLink({
   return (
     <Link
       href={href}
-      className="block bg-white rounded-2xl border border-gray-200 shadow-sm p-6 hover:border-gold/40 transition-all"
+      className="block bg-white rounded-2xl border border-gray-200 shadow-sm p-6 hover:border-lane/40 transition-all"
     >
-      <h3 className="text-navy font-bold mb-1">{title}</h3>
+      <h3 className="text-ink font-bold mb-1">{title}</h3>
       <p className="text-sm text-gray-500 leading-relaxed">{body}</p>
-      <p className="text-sm font-semibold text-gold-dark mt-3">Open →</p>
+      <p className="text-sm font-semibold text-lane-dark mt-3">Open →</p>
     </Link>
   );
 }

@@ -15,46 +15,34 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="divide-y divide-ink/10 border-y border-ink/10">
       {items.map((item, i) => {
         const isOpen = openIndex === i;
         return (
-          <div
-            key={item.question}
-            className={`rounded-2xl border transition-all ${
-              isOpen
-                ? "border-gold/40 bg-white shadow-md"
-                : "border-gray-200 bg-white hover:border-gold/30"
-            }`}
-          >
+          <div key={item.question}>
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
-              className="w-full flex items-center justify-between gap-4 text-left px-6 py-5"
+              className="group w-full flex items-center justify-between gap-6 text-left py-6"
               aria-expanded={isOpen}
             >
-              <span className="text-navy font-semibold text-base sm:text-lg">
+              <span
+                className={`font-display text-lg sm:text-xl font-bold transition-colors ${
+                  isOpen ? "text-ink" : "text-ink/80 group-hover:text-ink"
+                }`}
+              >
                 {item.question}
               </span>
               <span
-                className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                   isOpen
-                    ? "bg-gold text-navy rotate-180"
-                    : "bg-off-white text-navy"
+                    ? "bg-lane text-ink rotate-45"
+                    : "bg-paper text-ink group-hover:bg-lane/40"
                 }`}
+                aria-hidden="true"
               >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M19 9l-7 7-7-7"
-                  />
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 5v14m-7-7h14" />
                 </svg>
               </span>
             </button>
@@ -65,7 +53,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-6 pb-6 text-gray-600 leading-relaxed text-sm sm:text-base">
+                <p className="pb-7 pr-14 text-ink-soft leading-relaxed text-base sm:text-[17px]">
                   {item.answer}
                 </p>
               </div>

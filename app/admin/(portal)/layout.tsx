@@ -14,7 +14,7 @@ export default async function AdminPortalLayout({
   } = await supabase.auth.getUser();
 
   return (
-    <div className="bg-off-white min-h-[80vh]">
+    <div className="bg-paper min-h-[80vh]">
       <AdminNav email={user?.email ?? null} />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         {children}

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PackageCard from "@/components/PackageCard";
+import PageHero from "@/components/PageHero";
+import SectionHeading from "@/components/SectionHeading";
+import CtaSign, { ArrowIcon } from "@/components/CtaSign";
 
 export const metadata: Metadata = {
   title: "Lesson Packages & Pricing",
@@ -113,38 +116,30 @@ const included = [
 export default function ServicesPage() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-navy relative overflow-hidden">
-        <div className="absolute -right-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 bg-gold/20 text-gold border border-gold/30 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 uppercase tracking-widest animate-rd-fade-up">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-              Lesson Packages
-            </span>
-            <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] mb-6 text-balance animate-rd-fade-up delay-100">
-              Built for every <span className="rd-shimmer">level</span>.
-            </h1>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-xl animate-rd-fade-up delay-200">
-              Whether you&apos;ve never sat behind a wheel or you&apos;re
-              tuning up for next week&apos;s DMV test, there&apos;s a package
-              that fits.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Lesson packages"
+        title={<>Built for every <span className="marker marker-animate">level.</span></>}
+        description="Whether you've never sat behind a wheel or you're tuning up for next week's DMV test, there's a package that fits."
+        image={{
+          src: "/images/parking-lot.webp",
+          alt: "Aerial view of a practice parking lot with cones around a white training car",
+        }}
+      >
+        <Link href="/booking" className="btn-primary">
+          Book a lesson
+          <ArrowIcon />
+        </Link>
+        <a href="tel:+15624248885" className="btn-outline">
+          Call for pricing
+        </a>
+      </PageHero>
 
       {/* ── Packages ── */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-24 sm:py-28 bg-[#FFFDF8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch pt-4">
             {packages.map((pkg, i) => (
-              <div
-                key={pkg.title}
-                data-reveal="up"
-                data-reveal-delay={i * 120}
-                className="hover-lift"
-              >
+              <div key={pkg.title} data-reveal="up" data-reveal-delay={i * 120}>
                 <PackageCard
                   title={pkg.title}
                   sessions={pkg.sessions}
@@ -158,7 +153,7 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          <p className="text-center text-sm text-gray-500 mt-10 max-w-2xl mx-auto">
+          <p className="text-center text-ink-soft mt-12 max-w-2xl mx-auto">
             All packages include pickup &amp; drop-off in Orange County.
             Sessions are typically scheduled 2 hours at a time but can be split
             on request.
@@ -166,143 +161,86 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── Add-ons ── */}
-      <section className="py-20 sm:py-24 bg-off-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14" data-reveal="up">
-            <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
-              Add-ons & Extras
-            </h2>
-            <p className="text-gray-500 text-lg max-w-xl mx-auto">
-              Mix and match. Every driver&apos;s journey is different — book
-              only what you need.
-            </p>
+      {/* ── What's Included ── */}
+      <section className="pb-24 sm:pb-28 bg-[#FFFDF8]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="sign-plate p-8 sm:p-12 lg:p-14 text-white grid grid-cols-1 lg:grid-cols-5 gap-10 items-center" data-reveal="zoom">
+            <div className="lg:col-span-2">
+              <span className="eyebrow !text-lane mb-4">No hidden fees</span>
+              <h2 className="text-4xl sm:text-5xl font-black leading-[1]">
+                Every lesson includes
+              </h2>
+              <p className="text-white/75 mt-4 text-lg leading-relaxed">
+                No surprises. Just driving lessons that work.
+              </p>
+            </div>
+            <ul className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
+              {included.map((item) => (
+                <li key={item} className="flex items-start gap-3 py-3 border-b border-white/15">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-lane flex items-center justify-center mt-0.5">
+                    <svg className="w-3.5 h-3.5 text-ink" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                  <span className="text-white/90 font-medium leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
+        </div>
+      </section>
+
+      {/* ── Add-ons ── */}
+      <section className="py-24 sm:py-28 paper-grid">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Add-ons & extras"
+            title="Mix and match."
+            description="Every driver's journey is different — book only what you need."
+            className="mb-16"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {addOns.map((a, i) => (
               <div
                 key={a.title}
-                className="group flex gap-5 p-6 rounded-2xl bg-white border border-gray-100 hover:border-gold/40 hover:shadow-md hover-lift"
+                className="group flex gap-6 p-8 rounded-[28px] bg-white ring-1 ring-ink/5 shadow-[0_20px_40px_-32px_rgba(21,23,28,0.5)] hover-lift"
                 data-reveal="up"
                 data-reveal-delay={i * 80}
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-navy text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-navy transition-colors">
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-lane text-ink flex items-center justify-center transition-transform group-hover:-rotate-6">
                   {a.icon}
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-navy mb-1.5">
-                    {a.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    {a.body}
-                  </p>
+                  <h3 className="text-2xl font-black text-ink mb-2">{a.title}</h3>
+                  <p className="text-ink-soft leading-relaxed">{a.body}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 text-navy font-semibold hover:text-gold-dark transition-colors text-sm"
-            >
-              Don&apos;t see what you need? Ask Ricky.
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+          <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-3" data-reveal="up">
+            <Link href="/contact" className="btn-outline">
+              Don&apos;t see what you need? Ask Ricky
+              <ArrowIcon />
+            </Link>
+            <Link href="/faq" className="btn-outline">
+              Read the FAQ
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── What's Included ── */}
-      <section className="py-20 sm:py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12" data-reveal="up">
-            <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
-              Every Lesson Includes
-            </h2>
-            <p className="text-gray-500 text-lg max-w-xl mx-auto">
-              No hidden fees. No surprises. Just driving lessons that work.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {included.map((item, i) => (
-              <div
-                key={item}
-                className="flex items-start gap-3 p-5 rounded-xl border border-gray-100 bg-off-white"
-                data-reveal="up"
-                data-reveal-delay={i * 60}
-              >
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gold flex items-center justify-center mt-0.5">
-                  <svg
-                    className="w-3.5 h-3.5 text-navy"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <span className="text-navy text-sm font-medium leading-relaxed">
-                  {item}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ teaser ── */}
-      <section className="py-16 bg-off-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h3 className="text-2xl sm:text-3xl font-black text-navy mb-3">
-            Have questions?
-          </h3>
-          <p className="text-gray-500 mb-6">
-            Pricing, scheduling, DMV test — chances are it&apos;s covered.
-          </p>
-          <Link
-            href="/faq"
-            className="inline-flex items-center gap-2 text-navy font-semibold border-2 border-navy hover:bg-navy hover:text-white px-7 py-3 rounded-xl transition-all text-sm"
-          >
-            Read the FAQ
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className="relative overflow-hidden bg-navy py-20 sm:py-24">
-        <div className="absolute -right-32 -top-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
-        <div className="absolute -left-32 -bottom-32 w-96 h-96 rounded-full border-[40px] border-gold/10 pointer-events-none" />
-
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center" data-reveal="up">
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-5 text-balance">
-            Pick your package. Pick your time.
-          </h2>
-          <p className="text-gray-300 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-            Book online in under two minutes. You&apos;ll see Ricky&apos;s real
-            availability and lock in your slot instantly.
-          </p>
-          <Link
-            href="/booking"
-            className="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-navy font-black px-10 py-4 rounded-xl text-base transition-all shadow-xl hover:-translate-y-0.5"
-          >
-            Book Now
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+      <CtaSign
+        tab="Book online"
+        title="Pick your package. Pick your time."
+        body="Book online in under two minutes. You'll see Ricky's real availability and lock in your slot instantly."
+        primary={{ label: "Book now", href: "/booking" }}
+      />
     </>
   );
 }

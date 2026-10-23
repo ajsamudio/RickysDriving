@@ -103,13 +103,13 @@ export default function AvailabilityEditor({ initialRows }: Props) {
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
       <div className="px-6 py-5 border-b border-gray-100 flex items-center justify-between gap-3">
-        <h2 className="text-lg font-black text-navy">Recurring time windows</h2>
+        <h2 className="text-lg font-black text-ink">Recurring time windows</h2>
         {!adding && (
           <button
             type="button"
             onClick={() => setAdding(true)}
             disabled={busy}
-            className="bg-gold hover:bg-gold-dark text-navy font-bold text-sm px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
+            className="bg-lane hover:bg-lane-strong text-ink font-bold text-sm px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
           >
             + Add window
           </button>
@@ -117,7 +117,7 @@ export default function AvailabilityEditor({ initialRows }: Props) {
       </div>
 
       {adding && (
-        <div className="px-6 py-5 bg-off-white border-b border-gray-100">
+        <div className="px-6 py-5 bg-paper border-b border-gray-100">
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 items-end">
             <Field label="Day">
               <select
@@ -156,7 +156,7 @@ export default function AvailabilityEditor({ initialRows }: Props) {
                 type="button"
                 onClick={handleAdd}
                 disabled={busy}
-                className="flex-1 bg-navy hover:bg-navy-light text-white font-bold text-sm py-2.5 rounded-lg transition-colors disabled:opacity-50"
+                className="flex-1 bg-ink hover:bg-ink-light text-white font-bold text-sm py-2.5 rounded-lg transition-colors disabled:opacity-50"
               >
                 Save
               </button>
@@ -167,7 +167,7 @@ export default function AvailabilityEditor({ initialRows }: Props) {
                   setError(null);
                 }}
                 disabled={busy}
-                className="px-3 text-navy/70 hover:text-navy font-semibold text-sm"
+                className="px-3 text-ink/70 hover:text-ink font-semibold text-sm"
               >
                 Cancel
               </button>
@@ -202,7 +202,7 @@ export default function AvailabilityEditor({ initialRows }: Props) {
                 )}
               >
                 <div className="min-w-0">
-                  <p className="text-navy font-bold">
+                  <p className="text-ink font-bold">
                     {DAY_LABELS[row.day_of_week]}
                   </p>
                   <p className="text-sm text-gray-500">
@@ -219,7 +219,7 @@ export default function AvailabilityEditor({ initialRows }: Props) {
                       "text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50",
                       inactive
                         ? "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                        : "bg-gold/15 text-gold-dark hover:bg-gold/25"
+                        : "bg-lane/15 text-lane-dark hover:bg-lane/25"
                     )}
                   >
                     {inactive ? "Inactive" : "Active"}
@@ -246,15 +246,15 @@ export default function AvailabilityEditor({ initialRows }: Props) {
           padding: 0.625rem 0.75rem;
           border-radius: 0.5rem;
           border: 1px solid #e5e7eb;
-          color: #0a1628;
+          color: #15171c;
           font-size: 0.9rem;
           background: #ffffff;
           transition: border-color 0.15s, box-shadow 0.15s;
         }
         :global(.admin-input:focus) {
           outline: none;
-          border-color: #c9a84c;
-          box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+          border-color: #15171c;
+          box-shadow: 0 0 0 3px rgba(255, 194, 26, 0.4);
         }
       `}</style>
     </div>
